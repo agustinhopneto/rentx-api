@@ -8,11 +8,14 @@ import { SpecificationsRepository } from '../../modules/cars/repositories/implem
 import { ISpecificationsRepository } from '../../modules/cars/repositories/ISpecificationsRepository';
 
 container.registerSingleton<IUsersRepository>(
-  'UsersRepository', UsersRepository,
+  'UsersRepository',
+  UsersRepository,
 );
 container.registerSingleton<ICategoryRepository>(
-  'CategoriesRepository', CategoriesRepository,
+  'CategoriesRepository',
+  CategoriesRepository,
 );
 container.registerSingleton<ISpecificationsRepository>(
-  'SpecificationsRepository', SpecificationsRepository,
+  'SpecificationsRepository',
+  SpecificationsRepository,
 );

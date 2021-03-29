@@ -9,7 +9,10 @@ class CreateSpecificationUseCases {
     @inject('SpecificationsRepository')
     private specificationRepository: SpecificationsRepository,
   ) {}
-  async execute({ name, description }: ICreateSpecificationsDTO): Promise<void> {
+  async execute({
+    name,
+    description,
+  }: ICreateSpecificationsDTO): Promise<void> {
     await this.specificationRepository.create({ name, description });
   }
 }
