@@ -14,6 +14,12 @@ export class AuthenticateUserController {
       password,
     });
 
-    return response.json({ user, token });
+    return response.json({
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+      token,
+    });
   }
 }

@@ -4,7 +4,7 @@ import { Specification } from '../../entities/Specification';
 import { SpecificationsRepository } from '../../repositories/implementations/SpecificationsRepository';
 
 @injectable()
-class ListSpecificationUseCases {
+class ListSpecificationsUseCases {
   constructor(
     @inject('SpecificationsRepository')
     private specificationRepository: SpecificationsRepository,
@@ -12,7 +12,8 @@ class ListSpecificationUseCases {
 
   async execute(): Promise<Specification[]> {
     const list = await this.specificationRepository.list();
+
     return list;
   }
 }
-export { ListSpecificationUseCases };
+export { ListSpecificationsUseCases };

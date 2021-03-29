@@ -19,14 +19,17 @@ class ImportCategoriesUseCase {
   loadCategories(file: Express.Multer.File): Promise<IImportCategories[]> {
     return new Promise((resolve, reject) => {
       const fileParser = csvParse();
+
       const categories: IImportCategories[] = [];
 
       const stream = fs.createReadStream(file.path);
+
       stream.pipe(fileParser);
 
       fileParser
         .on('data', async line => {
           const [name, description] = line;
+
           categories.push({
             name,
             description,
@@ -45,6 +48,7 @@ class ImportCategoriesUseCase {
 
     categories.forEach(async category => {
       const { name } = category;
+
       const alreadyExists = await this.categoriesRepository.findByName(name);
 
       if (!alreadyExists) {

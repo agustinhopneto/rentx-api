@@ -8,6 +8,7 @@ import {
 
 class SpecificationsRepository implements ISpecificationsRepository {
   private repository: Repository<Specification>;
+
   constructor() {
     this.repository = getRepository(Specification);
   }
@@ -23,11 +24,13 @@ class SpecificationsRepository implements ISpecificationsRepository {
 
   async findByName(name: string): Promise<Specification> {
     const specification = await this.repository.findOne({ name });
+
     return specification;
   }
 
   async list(): Promise<Specification[]> {
     const list = await this.repository.find();
+
     return list;
   }
 }
