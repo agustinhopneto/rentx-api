@@ -1,0 +1,133 @@
+{
+  "openapi": "3.0.0",
+  "info":{
+    "title": "RentalX Documentation",
+    "description": "This is an api Rent",
+    "version": "1.0.0",
+    "contact": {
+      "email": "agustinho.pneto@gmail.com"
+    }
+  },
+  "paths":{
+    "/categories":{
+      "post":{
+        "tags": ["Category"],
+        "sumary": "Create an category",
+        "description": "Create a new category",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema": {
+                "type": "object",
+                "properties":{
+                  "name": {
+                    "type": "string"
+                  },
+                  "description":{
+                    "type": "string"
+                  }
+                },
+                "example":{
+                  "name": "Category name sample",
+                  "description": "Category description sample"
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201": {
+            "description": "Created"
+          },
+          "500":{
+            "description": "Category Already Exists"
+          }
+        }
+      },
+      "get":{
+        "tags":["Category"],
+        "sumary": "List categories",
+        "description": "List all categories",
+        "responses":{
+          "200":{
+            "description":"Categories"
+          }
+        }
+      }
+    },
+    "/categories/import":{
+      "post":{
+        "tags":["Category"],
+        "sumary": "Import categories",
+        "description":"Import categories from a csv archive",
+        "requestBody":{
+          "content":{
+            "multipart/form-data":{
+              "schema":{
+                "type":"object",
+                "properties":{
+                  "file":{
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/specifications":{
+      "post":{
+        "tags": ["Specifications"],
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref": "#/definitions/Specification"
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description": "Created"
+          },
+          "500":{
+            "description": "Specification Already Exists"
+          }
+        }
+      },
+      "get":{
+        "tags":["Specifications"],
+        "responses":{
+          "200":{
+            "description":"List all specifications"
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "Specification":{
+      "type":"object",
+      "properties":{
+        "name":{
+          "type":"string"
+        },
+        "description": {
+          "type":"string"
+        }
+      },
+      "example":{
+        "name": "Specification name sample",
+        "description": "Specification description sample"
+      }
+    }
+  }
+}

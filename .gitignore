@@ -1,0 +1,6 @@
+node_modules
+yarn.lock
+tmp/*.*
+!tmp/.gitkeep
+tmp/avatar/*.*
+!tmp/avatar/.gitkeep
