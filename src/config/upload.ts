@@ -6,7 +6,7 @@ interface IUpload {
   storage: multer.StorageEngine;
 }
 
-export default {
+const uploadConfig = {
   upload(folder: string): IUpload {
     return {
       storage: multer.diskStorage({
@@ -20,3 +20,5 @@ export default {
     };
   },
 };
+
+export { uploadConfig };

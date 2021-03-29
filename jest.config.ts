@@ -1,3 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { pathsToModuleNameMapper } from 'ts-jest/utils';
+
+import { compilerOptions } from './tsconfig.json';
+
 export default {
   bail: true,
   clearMocks: true,
@@ -5,4 +10,7 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: ['**/*.spec.ts'],
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>/src/',
+  }),
 };
