@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export const deleteFile = (filename:string):void => {
+export const deleteFile = (filename: string): void => {
   try {
     fs.promises.stat(filename);
   } catch {

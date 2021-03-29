@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '../../../../errors/AppError';
 import {
-  ICategoryRepository,
+  ICategoriesRepository,
   ICreateCategoryDTO,
 } from '../../repositories/ICategoriesRepository';
 
@@ -10,7 +10,7 @@ import {
 class CreateCategoryUseCase {
   constructor(
     @inject('CategoriesRepository')
-    private categoriesRepository: ICategoryRepository,
+    private categoriesRepository: ICategoriesRepository,
   ) {}
 
   async execute({ name, description }: ICreateCategoryDTO): Promise<void> {
