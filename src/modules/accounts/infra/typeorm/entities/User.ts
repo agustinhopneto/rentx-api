@@ -22,7 +22,7 @@ export class User {
   avatar: string;
 
   @Column()
-  isAdmin: boolean;
+  is_admin: boolean;
 
   @CreateDateColumn()
   created_at: Date;

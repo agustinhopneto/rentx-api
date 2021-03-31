@@ -6,19 +6,19 @@ import { CreateUserController } from '@modules/accounts/useCases/CreateUser/Crea
 import { UpdateUserAvatarController } from '@modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarController';
 import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
 
-const usersRouter = Router();
+const usersRoutes = Router();
 const uploadAvatar = multer(uploadConfig.upload('./tmp/avatar'));
 
 const createUserController = new CreateUserController();
 const updateUserAvatarController = new UpdateUserAvatarController();
 
-usersRouter.post('/', createUserController.handle);
+usersRoutes.post('/', createUserController.handle);
 
-usersRouter.patch(
+usersRoutes.patch(
   '/avatar',
   ensureAuthenticated,
   uploadAvatar.single('avatar'),
   updateUserAvatarController.handle,
 );
 
-export { usersRouter };
+export { usersRoutes };
