@@ -2,5 +2,7 @@ node_modules
 yarn.lock
 tmp/*.*
 !tmp/.gitkeep
-tmp/avatar/*.*
-!tmp/avatar/.gitkeep
+tmp/avatars/*.*
+!tmp/avatars/.gitkeep
+tmp/cars/*.*
+!tmp/cars/.gitkeep
