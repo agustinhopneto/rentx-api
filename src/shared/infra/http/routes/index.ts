@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { authenticateRouter } from './authenticate.routes';
+import { authenticateRoutes } from './authenticate.routes';
 import { carsRoutes } from './cars.routes';
 import { categoriesRoutes } from './categories.routes';
 import { rentalsRoutes } from './rentals.routes';
@@ -14,6 +14,6 @@ router.use('/specifications', specificationsRoutes);
 router.use('/users', usersRoutes);
 router.use('/cars', carsRoutes);
 router.use('/rentals', rentalsRoutes);
-router.use('/', authenticateRouter);
+router.use('/', authenticateRoutes);
 
 export { router };
