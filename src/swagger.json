@@ -12,8 +12,11 @@
     "/categories":{
       "post":{
         "tags": ["Category"],
-        "sumary": "Create an category",
+        "summary": "Create a category",
         "description": "Create a new category",
+        "security": [
+          { "bearerAuth": [] }
+        ],
         "requestBody":{
           "content":{
             "application/json":{
@@ -46,7 +49,7 @@
       },
       "get":{
         "tags":["Category"],
-        "sumary": "List categories",
+        "summary": "List categories",
         "description": "List all categories",
         "responses":{
           "200":{
@@ -58,8 +61,11 @@
     "/categories/import":{
       "post":{
         "tags":["Category"],
-        "sumary": "Import categories",
+        "summary": "Import categories",
         "description":"Import categories from a csv archive",
+        "security": [
+          { "bearerAuth": [] }
+        ],
         "requestBody":{
           "content":{
             "multipart/form-data":{
@@ -85,6 +91,10 @@
     "/specifications":{
       "post":{
         "tags": ["Specifications"],
+        "summary": "Create specification",
+        "security": [
+          { "bearerAuth": [] }
+        ],
         "requestBody":{
           "content":{
             "application/json":{
@@ -105,9 +115,42 @@
       },
       "get":{
         "tags":["Specifications"],
+        "summary": "Show a specification",
         "responses":{
           "200":{
             "description":"List all specifications"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["Sessions"],
+        "summary": "Authentication user",
+        "description": "Authenticate user and create a token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Seccess"
+          },
+          "400": {
+            "description": "Email or password incorrect!"
           }
         }
       }
@@ -127,6 +170,15 @@
       "example":{
         "name": "Specification name sample",
         "description": "Specification description sample"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

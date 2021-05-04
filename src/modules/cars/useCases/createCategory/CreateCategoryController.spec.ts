@@ -76,20 +76,9 @@ describe('Create Category Controller', () => {
         Authorization: `Bearer ${token}`,
       });
 
-    await request(app)
-      .post('/categories')
-      .send({
-        name: 'Category Supertest 2',
-        description: 'Description supertest 2',
-      })
-      .set({
-        Authorization: `Bearer ${token}`,
-      });
-
     const response = await request(app).get('/categories');
 
     expect(response.status).toBe(200);
-    expect(response.body.length).toBe(2);
-    expect(response.body[0]).toHaveProperty('id');
+    expect(response.body.length).toBe(1);
   });
 });

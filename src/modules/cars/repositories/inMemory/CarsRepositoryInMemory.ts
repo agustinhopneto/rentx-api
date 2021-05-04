@@ -29,8 +29,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
       name,
       license_plate,
       specifications,
-      available: true,
-      create_at: new Date(),
+      created_at: new Date(),
     });
 
     this.cars.push(car);

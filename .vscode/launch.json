@@ -10,7 +10,8 @@
       ],
       "outFiles": [
         "${workspaceFolder}/**/*.js"
-      ]
+      ],
+      "port": 9229
     }
   ]
 }
