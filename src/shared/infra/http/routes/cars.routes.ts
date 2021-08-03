@@ -25,7 +25,7 @@ carsRoutes.use(ensureAdmin);
 
 carsRoutes.post('/', createCarController.handle);
 carsRoutes.post('/specifications/:id', addCarSpecificationsController.handle);
-carsRoutes.post(
+carsRoutes.patch(
   '/images/:id',
   upload.array('images'),
   uploadCarImagesController.handle,
