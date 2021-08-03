@@ -17,9 +17,8 @@ class CreateSpecificationUseCases {
     name,
     description,
   }: ICreateSpecificationsDTO): Promise<void> {
-    const specificationAlreadyExists = await this.specificationRepository.findByName(
-      name,
-    );
+    const specificationAlreadyExists =
+      await this.specificationRepository.findByName(name);
 
     if (specificationAlreadyExists) {
       throw new AppError('Specification already exists!');

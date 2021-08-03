@@ -21,18 +21,16 @@ class RefreshTokenUseCase {
   ) {}
 
   async execute(token: string): Promise<string> {
-    const {
-      expires_in_refresh,
-      secret_refresh,
-      expires_in_refresh_days,
-    } = auth;
+    const { expires_in_refresh, secret_refresh, expires_in_refresh_days } =
+      auth;
 
     const { email, sub: userId } = verify(token, secret_refresh) as IPayload;
 
-    const userToken = await this.usersTokensRepository.findByUserIdAndRefreshToken(
-      userId,
-      token,
-    );
+    const userToken =
+      await this.usersTokensRepository.findByUserIdAndRefreshToken(
+        userId,
+        token,
+      );
 
     if (!userToken) {
       throw new AppError('Refresh Token does not exists!');
